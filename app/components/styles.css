@@ -1,103 +1,305 @@
 body {
-  margin: 0;
-  background-color: #2b0505;
-  color: #f9e8e8;
-  font-family: var(--font-montserrat), sans-serif;
-}
-.container {
-  padding: 2rem;
+  overflow-x: hidden;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  opacity: 0.8;
-  margin-bottom: 1.5rem;
-}
-
-.search-row {
-  margin-bottom: 2rem;
-}
-
-.search-input {
-  width: 100%;
-  max-width: 500px;
-  padding: 0.9rem 1rem;
-  border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-}
-
-.games-scroll {
   display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
-  scroll-behavior: smooth;
-}
-
-.games-scroll::-webkit-scrollbar {
-  height: 10px;
-}
-
-.games-scroll::-webkit-scrollbar-thumb {
-  background: #f9e8e8;
-  border-radius: 999px;
-}
-
-.games-scroll::-webkit-scrollbar-track {
-  background: #3a0a0a;
-  border-radius: 999px;
-}
-
-/*All the little games in the card stuff like roblox type shit yk
-lowk hadda use chat dawg for some debugging cuz they wouldnt just stick to their little boxes
-*/
-.game-card {
-  min-width: 180px;
-  max-width: 180px;
-  background: #3a0a0a;
-  border-radius: 16px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.game-image {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 50px;
+  top: 0px;
   width: 100%;
-  height: 240px;
-  object-fit: cover;
-  display: block;
+  margin: 0px;
+  padding: 90px;
+  background-color: #16161d;
+  color: white;
+}
+
+.game-poster {
+  border-radius: 5px;
+  width: 25%;
+
+}
+
+.center-information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+/* The carousel class is designed to create a horizontal scrolling container for the game cards */
+/* Method of this code was slightly modified but came from article by CSS-Tricks */
+/* source: https://css-tricks.com/creating-scroll-based-animations-in-full-view/ */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  width: max(100%, 50vw);
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overflow-y: hidden;
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+  width: calc(100% / 3);
+  aspect-ratio: .8;
+  margin: 15px;
+  padding: 15px;
+
+  border-radius: 4px;
+  border: 4px solid #292b35;
+
+  scroll-snap-align: center;
+  animation: slide;
+  animation-timeline: view(inline);
+}
+
+
+
+@keyframes slide {
+  45%, 100% {
+    transform: scale(0.5);
+    border-radius: 20px;
+    filter: blur(4px) brightness(.8);
+  }
+
+  50% {
+    transform: scale(1);
+    border-radius: 4px;
+    filter: none;
+  }
+}
+
+/* End of carousel code */
+
+/* Reused carousel slide but utilized only for empty cards for displaying */
+/* The far left game when loading the webpage */ 
+.carousel-slide-2 {
+  flex-shrink: 0;
+  width: calc(100% / 3);
+  aspect-ratio: .8;
+  margin: -15px;
+  padding: 0px;
+
+  scroll-snap-align: center;
+}
+
+.img{
+  width: 100%;
+  border-radius: 10px;
 }
 
 .game-title {
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.8rem;
-  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
 }
 
-.pagination {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
+.game-info-button {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+  height: 120px;
+  width: 240px;
+  margin: 30px;
+  background-color: #292b35;
+  color: white;
+  border-color: #292b35;
 }
 
-.pagination button {
-  padding: 0.7rem 1rem;
-  border: none;
-  border-radius: 10px;
-  background: #f9e8e8;
-  color: #2b0505;
-  font-weight: 700;
+.game-info-button:hover {
+  background-color: #121318;
   cursor: pointer;
 }
 
-.pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;   
+    top: 0px;
+    width: 100%;
+    margin: 20px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    gap: 50px;
+}
+
+.shift {
+    margin-left: -40px;
+    padding-left: 5px;
+    height: 60px;
+    width: 240px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #292b35;
+    color: white;
+    border-color: #292b35;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.right-shift {
+    margin-right: 5px;
+    font-size: 20px;
+    height: 58px;
+    border-radius: 5px;
+    width: 240px;
+    padding-left: 6px;
+    background-color: #292b35;
+    color: white;
+    border-color: #292b35;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.change {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.previous {
+    margin-left: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    border-color: #292b35;
+    background-color: #292b35;
+    font-size: 17px;
+    color: white;
+    border: none;
+    height: 45px;
+    width: 135px;
+    border-radius: 3px;
+}
+
+.previous:hover {
+    background-color: #121318;
+    cursor: pointer;
+}
+
+.next {
+    font-family: Arial, sans-serif;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    border-color: #292b35;
+    background-color: #292b35;
+    font-size: 17px;
+    border: none;
+    height: 45px;
+    width: 135px;
+    border-radius: 3px;
+}
+
+.next:hover {
+    background-color: #121318;
+    cursor: pointer;
+}
+
+.game-date {
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+}
+
+
+/* initial attempt to get a card design, for each
+game but was unsuccessful */
+
+/* .game-card {
+  width: 250px;
+  border: 1px solid #f9e8e8;
+} */
+
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-self: start;
+}
+
+body {
+  background-color: #181b22;
+  color: #f9e8e8;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+
+.centered-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  top: 0px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #16161d;
+}
+
+.text {
+  margin-right: 15px;
+  margin-left: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.size {
+  font-size: 50px;
+}
+
+.info-image {
+  width: 30%;
+  border-radius: 10px;
+  margin: 20px;
+  margin-right: 450px;
+  margin-bottom: -460px;
+  padding: 125px;
+}
+
+.info-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+.info-description {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  margin-left: 100px;
+  font-size: 25px;
+}
+
+.rating-image {
+  width: 50%;
+}
+
+.info-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 700px;
+
+}
+
+.return-menu-button {
+  margin: 30px;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  border-color: #292b35;
+  background-color: #292b35;
+  font-size: 17px;
+  color: white;
+  border: none;
+  height: 90px;
+  width: 270px;
+  border-radius: 3px;
+  margin-left: 100px;
 }
